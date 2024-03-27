@@ -16,6 +16,10 @@ app.put("/user",function(req,res){
     res.send("got a put request at /user")
 })
 
+app.delete("/user",function(req,res){
+    res.send("got a delete request at /user")
+})
+
 app.listen(port,()=>{
 console.log(`app listening in port ${port}`)
 })
