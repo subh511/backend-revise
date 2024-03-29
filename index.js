@@ -1,8 +1,13 @@
 const express = require("express");
+const bodyParser = require("body-parser");
+
+//middleware
 
 const app = express();
 
 const port = 3000;
+
+app.use(bodyParser.json())
 
 // const myLogger = function(req,res,next){
 //     console.log('logged!')
@@ -21,6 +26,11 @@ app.get("/routeHandler", function(req,res){
     //     age:"25"
     // })
     res.send('<h1>hello</h1>')
+})
+
+app.get("/",function(req,res){
+    console.log(req.body)
+    res.send('hello world!')
 })
 
 app.post("/conversation",function(req,res){
