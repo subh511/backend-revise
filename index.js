@@ -28,9 +28,9 @@ app.get("/routeHandler", function(req,res){
     res.send('<h1>hello</h1>')
 })
 
-app.get("/",function(req,res){
+app.post("/",function(req,res){
     console.log(req.body)
-    res.send('hello world!')
+    res.send('samrat')
 })
 
 app.post("/conversation",function(req,res){
