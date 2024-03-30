@@ -1,11 +1,13 @@
-var user = {
-  name: "jhon",
-  kidneys: [
-    {
-      healthy: false,
-    },
-  ],
-};
+var users = [
+  {
+    name: "jhon",
+    kidneys: [
+      {
+        healthy: false,
+      },
+    ],
+  },
+];
 
 const express = require("express");
 const app = express();
@@ -24,12 +26,37 @@ const app = express();
  * 500 -
  */
 
-app.get("/", function (req, res) {});
+app.get("/JhonKidney", function (req, res) {
+  const jhonKidneys = users[0].kidneys;
+  console.log(jhonKidneys);
+  //hoe many kidneys are there in total;
+  const numberOfKidneys = kidneys.length;
 
-app.post("/", function (req, res) {});
+  let numberOfHealthyKidneys = 0;
 
-app.put("/", function (req, res) {});
+  for (let i = 0; i < jhonKidneys.length; i++) {
+    if (jhonKidneys[i].healthy) {
+      numberOfHealthyKidneys += 1;
+    }
+  }
+  const numberOfUnhealthyKidneys = numberOfKidneys - numberOfHealthyKidneys;
+  res.json({
+    jhonKidneys,
+    numberOfHealthyKidneys,
+    numberOfUnhealthyKidneys,
+  });
+});
 
-app.delete("/", function (req, res) {});
+// app.post("/", function (req, res) {
+
+// });
+
+// app.put("/", function (req, res) {
+
+// });
+
+// app.delete("/", function (req, res) {
+
+// });
 
 app.listen(3000);
