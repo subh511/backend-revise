@@ -1,5 +1,5 @@
 const express = require("express");
-const bodyParser = require("body-parser");
+//const bodyParser = require("body-parser");
 
 //middleware
 
@@ -7,7 +7,7 @@ const app = express();
 
 const port = 3000;
 
-app.use(bodyParser.json())
+//app.use(bodyParser.json())
 
 // const myLogger = function(req,res,next){
 //     console.log('logged!')
@@ -16,29 +16,29 @@ app.use(bodyParser.json())
 
 // app.use(myLogger)
 
-app.get("/",function(req,res){
-    res.send("Samrat !")
-})
+// app.get("/",function(req,res){
+//     res.send("Samrat !")
+// })
 
-app.get("/routeHandler", function(req,res){
-    // res.json({
-    //     name:"samrat",
-    //     age:"25"
-    // })
-    res.send('<h1>hello</h1>')
-})
+// app.get("/routeHandler", function(req,res){
+//     // res.json({
+//     //     name:"samrat",
+//     //     age:"25"
+//     // })
+//     res.send('<h1>hello</h1>')
+// })
 
-app.post("/",function(req,res){
-    console.log(req.body)
-    res.send('samrat')
-})
+// app.post("/",function(req,res){
+//     console.log(req.body)
+//     res.send('samrat')
+// })
 
-app.post("/conversation",function(req,res){
-    console.log(req.body)
-    res.send({
-        msg: "2 + 2 = 4"
-    })
-})
+// app.post("/conversation",function(req,res){
+//     console.log(req.body)
+//     res.send({
+//         msg: "2 + 2 = 4"
+//     })
+// })
 
 // app.post("/",function(req,res){
 //     res.send("got a post request")
