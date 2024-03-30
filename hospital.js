@@ -1,3 +1,12 @@
+var user = {
+  name: "jhon",
+  kidneys: [
+    {
+      healthy: false,
+    },
+  ],
+};
+
 const express = require("express");
 const app = express();
 
@@ -8,4 +17,19 @@ const app = express();
  * DELETE Method: delete is used to delete something from backend
  */
 
-app.listen(3000)
+/**
+ * Status Code;
+ * 200 to 205 - everything went fine;
+ * 404 - route doesn't exist;
+ * 500 -
+ */
+
+app.get("/", function (req, res) {});
+
+app.post("/", function (req, res) {});
+
+app.put("/", function (req, res) {});
+
+app.delete("/", function (req, res) {});
+
+app.listen(3000);
