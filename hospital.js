@@ -68,8 +68,16 @@ app.put("/", function (req, res) {
     res.json({})
 });
 
-// app.delete("/", function (req, res) {
+app.delete("/", function (req, res) {
+    const newKidneys = [];
 
-// });
+    for(let i=0; i<users[0].kidneys.length; i++){
+        if(users[0].kidneys[i].healthy){
+            newKidneys.push({
+                healthy:true
+            })
+        }
+    }
+});  
 
 app.listen(3000);
