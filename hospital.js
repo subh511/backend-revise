@@ -12,7 +12,7 @@ var users = [
 const express = require("express");
 const app = express();
 
-app.use(express.json())
+app.use(express.json());
 
 /**
  * GET Method: is asking something to the server;
@@ -56,28 +56,31 @@ app.post("/po", function (req, res) {
     healthy: isHealthy,
   });
   res.json({
-    msg:"Done!"
-  })
+    msg: "Done!",
+  });
 });
 
 app.put("/", function (req, res) {
-
-    for(let i=0; i<users[0].kidneys.length; i++){
-        users[0].kidneys[i].healthy = true
-    }
-    res.json({})
+  for (let i = 0; i < users[0].kidneys.length; i++) {
+    users[0].kidneys[i].healthy = true;
+  }
+  res.json({});
 });
 
 app.delete("/", function (req, res) {
-    const newKidneys = [];
+  const newKidneys = [];
 
-    for(let i=0; i<users[0].kidneys.length; i++){
-        if(users[0].kidneys[i].healthy){
-            newKidneys.push({
-                healthy:true
-            })
-        }
+  for (let i = 0; i < users[0].kidneys.length; i++) {
+    if (users[0].kidneys[i].healthy) {
+      newKidneys.push({
+        healthy: true,
+      });
     }
-});  
+  }
+  users[0].kidneys = newKidneys;
+  res.json({
+    msg: "done!",
+  });
+});
 
 app.listen(3000);
