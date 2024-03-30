@@ -12,6 +12,8 @@ var users = [
 const express = require("express");
 const app = express();
 
+app.use(express.json())
+
 /**
  * GET Method: is asking something to the server;
  * POST Method: create something on internet;
@@ -26,30 +28,37 @@ const app = express();
  * 500 -
  */
 
-app.get("/JhonKidney", function (req, res) {
+app.get("/", function (req, res) {
   const jhonKidneys = users[0].kidneys;
-  console.log(jhonKidneys);
-  //hoe many kidneys are there in total;
-  const numberOfKidneys = kidneys.length;
+  //   console.log(jhonKidneys);
+  //   how many kidneys are there in total;
+
+  const numberOfKidneys = jhonKidneys.length;
 
   let numberOfHealthyKidneys = 0;
 
   for (let i = 0; i < jhonKidneys.length; i++) {
     if (jhonKidneys[i].healthy) {
-      numberOfHealthyKidneys += 1;
+      numberOfHealthyKidneys = numberOfHealthyKidneys + 1;
     }
   }
   const numberOfUnhealthyKidneys = numberOfKidneys - numberOfHealthyKidneys;
   res.json({
-    jhonKidneys,
+    numberOfKidneys,
     numberOfHealthyKidneys,
     numberOfUnhealthyKidneys,
   });
 });
 
-// app.post("/", function (req, res) {
-
-// });
+app.post("/po", function (req, res) {
+  const isHealthy = req.body.isHealthy;
+  users[0].kidneys.push({
+    healthy: isHealthy,
+  });
+  res.json({
+    msg:"Done!"
+  })
+});
 
 // app.put("/", function (req, res) {
 
