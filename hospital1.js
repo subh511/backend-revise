@@ -10,38 +10,47 @@ var users = [
 ];
 
 const express = require("express");
-const app = express()
+const app = express();
 
-app.get("/",function(req,res){
-    const kidneys = users[0].kidneys;
-    const jhonKidneys = kidneys.length;
+app.use(express.json())
 
-    let numberOfHealthyKidneys = 0;
+app.get("/", function (req, res) {
+  const jhonKidneys = users[0].kidneys;
+  const numberOfKidneys = jhonKidneys.length;
 
-    for(let i=0; i<jhonKidneys.length; i++){
-        if(jhonKidneys[i].healthy){
-            numberOfHealthyKidneys = numberOfHealthyKidneys + 1
-        }
+  let numberOfHealthyKidneys = 0;
+
+  for (let i = 0; i < jhonKidneys.length; i++) {
+    if (jhonKidneys[i].healthy) {
+      numberOfHealthyKidneys = numberOfHealthyKidneys + 1;
     }
+  }
 
-    const numberOfUnHealthyKidneys = jhonKidneys - numberOfHealthyKidneys
+  const numberOfUnHealthyKidneys = numberOfKidneys - numberOfHealthyKidneys;
 
-    res.json({
-        kidneys,
-        jhonKidneys,
-        numberOfHealthyKidneys,
-        numberOfUnHealthyKidneys
-    })
-})
+  res.json({
+    jhonKidneys,
+    numberOfKidneys,
+    numberOfHealthyKidneys,
+    numberOfUnHealthyKidneys,
+  });
+});
 
-app.post("/",function(req,res){
-    
-})
+app.post("/", function (req, res) {
+  const isHealthy = req.body.isHealthy;
+
+  users[0].kidneys.push({
+    healthy: isHealthy,
+  });
+
+  res.json({
+    msg: "done!",
+  });
+});
 
 //----------***-----------
 // const express = require("express");
 // const app = express();
-
 
 // app.use(express.json())
 
