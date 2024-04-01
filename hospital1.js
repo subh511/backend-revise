@@ -52,7 +52,7 @@ app.post("/", function (req, res) {
   });
 });
 
-//
+// making all kidney to healthy;
 
 app.put("/",function(req,res){
 
@@ -60,6 +60,24 @@ app.put("/",function(req,res){
         users[0].kidneys[i].healthy = true;
     }
     res.json({})
+})
+
+//deleting
+app.delete("/",function(req,res){
+    let newKidneys = []
+
+    for(let i=0; i<users[0].kidneys.length; i++){
+        if(users[0].kidneys[i].healthy){
+            newKidneys.push({
+                healthy:true
+            })
+        }
+    }
+    users[0].kidneys = newKidneys;
+    
+    res.json({
+        msg: "done"
+    })
 })
 
 
