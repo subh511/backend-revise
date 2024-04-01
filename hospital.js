@@ -30,8 +30,6 @@ app.use(express.json());
 
 app.get("/", function (req, res) {
   const jhonKidneys = users[0].kidneys;
-  //   console.log(jhonKidneys);
-  //   how many kidneys are there in total;
 
   const numberOfKidneys = jhonKidneys.length;
 
