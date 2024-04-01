@@ -14,6 +14,7 @@ const app = express();
 
 app.use(express.json())
 
+//how to get the kidneys;
 app.get("/", function (req, res) {
   const jhonKidneys = users[0].kidneys;
   const numberOfKidneys = jhonKidneys.length;
@@ -36,6 +37,9 @@ app.get("/", function (req, res) {
   });
 });
 
+//how to add a kidneys
+//healthy or unhealthy kidney
+
 app.post("/", function (req, res) {
   const isHealthy = req.body.isHealthy;
 
@@ -47,6 +51,17 @@ app.post("/", function (req, res) {
     msg: "done!",
   });
 });
+
+//
+
+app.put("/",function(req,res){
+
+    for(let i=0; i<users[0].kidneys.length; i++){
+        users[0].kidneys[i].healthy = true;
+    }
+    res.json({})
+})
+
 
 //----------***-----------
 // const express = require("express");
